@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { routers } from './routes/routes';
 import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,5 +12,8 @@ const root = ReactDOM.createRoot(
 
 
 root.render(
-  <RouterProvider router={routers}/>
+  <Provider store={store}>
+    <RouterProvider router={routers}/>
+  </Provider>
+  
 );

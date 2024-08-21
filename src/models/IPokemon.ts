@@ -1,4 +1,4 @@
-export interface IPokemonDetails {
+export interface IPokemon {
   abilities: IAbility[];
   base_experience: number;
   height: number;
