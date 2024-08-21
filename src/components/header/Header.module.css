@@ -1,0 +1,25 @@
+.header {
+   display: flex;
+   align-items: center;
+   height: 70px;
+   background-color: #2a2a2a;
+   box-sizing: border-box;
+   padding: 0 70px;
+ }
+ .header-nav-item {
+   border: 2px solid #31c469;
+   border-radius: 5px;
+   padding: 10px;
+   font-size: 18px;
+   font-weight: bold;
+ }
+ .header-nav-item span {
+   color: #31c469;
+ }
+ a {
+   text-decoration: none;
+   color: #fff;
+ }
+ a:hover {
+   color: #31c469;
+ }
