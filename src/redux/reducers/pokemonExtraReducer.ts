@@ -1,20 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { pokemonServise } from "../../services/pokemonServise";
 import { AxiosError } from "axios";
-import { IPokemon } from "../../models";
+import { IPokemon, IPokemonResponse } from "../../models";
 
-const getPokemons = createAsyncThunk(
+const getPokemons = createAsyncThunk (
    'pokemonSlice/getPokemons',
-   async (_, thunkAPI) => {
+   async (limit: number, thunkAPI) => {
        try {
-            let pokemons: IPokemon[] = [];
-            const response = await pokemonServise.getAll();
-            response.results.forEach( async (pokemon) => {
-                const data = await pokemonServise.getOneByName(pokemon.name)
-                console.log(data)
-                pokemons.push(data)
-            }) 
-            return thunkAPI.fulfillWithValue(pokemons);
+            const response = await pokemonServise.getAll(limit);
+            return thunkAPI.fulfillWithValue(response);
        } catch (e) {
            let error = e as AxiosError;
            return thunkAPI.rejectWithValue(error?.response?.data);
@@ -22,6 +16,20 @@ const getPokemons = createAsyncThunk(
    }
 )
 
+const getPokemonByName = createAsyncThunk(
+    'pokemonSlice/getPokemonByName',
+    async (name: string, thunkAPI) => {
+        try {
+             const pokemon = await pokemonServise.getOneByName(name);
+             return thunkAPI.fulfillWithValue(pokemon);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+ )
+
 export {
    getPokemons,
+   getPokemonByName,
 }

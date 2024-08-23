@@ -3,8 +3,8 @@ import { IPokemon, IPokemonResponse } from "../models";
 import { axiosInstance } from "./axiosServise";
 
 export const pokemonServise = {
-  getAll: async (): Promise<IPokemonResponse> => {
-    const response = await axiosInstance.get<IPokemonResponse>(urls.pokemons.base);
+  getAll: async (limit: number): Promise<IPokemonResponse> => {
+    const response = await axiosInstance.get<IPokemonResponse>(`${urls.pokemons.base}?limit=${limit}`);
     return response.data;
   },
   getOneByName: async (name: string): Promise<IPokemon> => {
