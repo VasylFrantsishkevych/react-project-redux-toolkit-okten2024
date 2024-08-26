@@ -1,0 +1,21 @@
+.pokemons_container {
+   box-sizing: border-box; 
+   padding-bottom: 25px;
+}
+.pokemons_list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 20px;
+}
+.pagination_container {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 25px;
+}
+.pokemon_filter {
+   width: 100%;
+   margin-bottom: 30px;
+   display: flex;
+   justify-content: space-between;
+}

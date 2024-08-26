@@ -1,13 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { pokemonServise } from "../../services/pokemonServise";
 import { AxiosError } from "axios";
-import { IPokemon, IPokemonResponse } from "../../models";
 
-const getPokemons = createAsyncThunk (
+import { IPokemonResponse } from "../../models";
+import { pokemonServise } from "../../services";
+
+const getPokemons = createAsyncThunk<IPokemonResponse, {limit: number, offset: number}> (
    'pokemonSlice/getPokemons',
-   async (limit: number, thunkAPI) => {
+   async ({limit, offset}, thunkAPI) => {
        try {
-            const response = await pokemonServise.getAll(limit);
+            const response = await pokemonServise.getAll(limit, offset);
             return thunkAPI.fulfillWithValue(response);
        } catch (e) {
            let error = e as AxiosError;
@@ -29,7 +30,47 @@ const getPokemonByName = createAsyncThunk(
     }
  )
 
+ const getPokemonsByType = createAsyncThunk (
+    'pokemonSlice/getPokemonsByType',
+    async (url: string, thunkAPI) => {
+        try {
+             const pokemonsByTypes = await pokemonServise.getPokemonsByType(url);
+             return thunkAPI.fulfillWithValue(pokemonsByTypes);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+ )
+ const getPokemonsByAbility = createAsyncThunk (
+    'pokemonSlice/getPokemonsByAbility',
+    async (url: string, thunkAPI) => {
+        try {
+             const pokemonsByAbility = await pokemonServise.getPokemonsByAbility(url);
+             return thunkAPI.fulfillWithValue(pokemonsByAbility);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+ )
+ const getFormsPokemon = createAsyncThunk (
+    'pokemonSlice/getFormsPokemon',
+    async (url: string, thunkAPI) => {
+        try {
+             const pokemonForms = await pokemonServise.getFormsPokemon(url);
+             return thunkAPI.fulfillWithValue(pokemonForms);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+ )
+
 export {
    getPokemons,
    getPokemonByName,
+   getPokemonsByType,
+   getPokemonsByAbility,
+   getFormsPokemon,
 }

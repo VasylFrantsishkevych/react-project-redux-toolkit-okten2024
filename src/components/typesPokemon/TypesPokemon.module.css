@@ -1,0 +1,9 @@
+.pokemon_types_container {
+   width: 70%;
+}
+.pokemon_types {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   
+}

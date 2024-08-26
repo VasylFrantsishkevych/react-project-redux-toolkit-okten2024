@@ -1,0 +1,13 @@
+.pokemon_type {
+   width: 65px;
+   padding: 4px;
+   text-align: center;
+   border-radius: 14px;
+   color:  #212121;
+   font-weight: 600;
+   line-height: 20px;
+}
+
+.link_type {
+   text-decoration: none;
+}

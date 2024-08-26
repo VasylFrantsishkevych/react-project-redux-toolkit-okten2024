@@ -1,0 +1,6 @@
+.pokemon_favorite_list {
+   display: flex;
+   justify-content: baseline;
+   flex-wrap: wrap;
+   gap: 20px;
+}

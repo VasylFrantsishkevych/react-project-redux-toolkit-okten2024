@@ -1,0 +1,10 @@
+.container {
+   width: 80%;
+   margin: 0 auto;
+   background-color: #fff;
+   box-shadow: 0 0 10px 5px lightgrey;
+   clip-path: inset(0 -15px 0 -15px);
+   box-sizing: border-box;
+   padding: 25px;
+   min-height: 100vh;
+}

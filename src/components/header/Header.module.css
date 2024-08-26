@@ -6,20 +6,23 @@
    box-sizing: border-box;
    padding: 0 70px;
  }
- .header-nav-item {
+ .header_nav_item {
    border: 2px solid #31c469;
    border-radius: 5px;
    padding: 10px;
    font-size: 18px;
    font-weight: bold;
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
  }
- .header-nav-item span {
+ .header_nav_item span {
    color: #31c469;
  }
- a {
+ .link {
    text-decoration: none;
    color: #fff;
  }
- a:hover {
+ .link:hover {
    color: #31c469;
  }

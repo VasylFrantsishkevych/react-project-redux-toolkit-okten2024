@@ -5,7 +5,7 @@ export interface IPokemonResponse {
   results: IResults[];
 }
 
-interface IResults{
+export interface IResults{
   name: string;
   url: string;
 }

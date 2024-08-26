@@ -1,6 +1,7 @@
 export interface IPokemon {
   abilities: IAbility[];
   base_experience: number;
+  forms: IForm[];
   height: number;
   id: number;
   name: string;
@@ -29,7 +30,7 @@ interface IAbility {
   slot: number;
 }
 
-interface IStat {
+export interface IStat {
   base_stat: number;
   effort: number;
   stat: {
@@ -44,4 +45,9 @@ interface IType {
     name: string;
     url: string;
   }
+}
+
+interface IForm {
+  name: string;
+  url: string;
 }

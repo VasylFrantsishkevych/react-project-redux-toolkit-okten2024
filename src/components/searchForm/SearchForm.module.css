@@ -1,0 +1,30 @@
+.search {
+   width: 400px;
+   height: 25px;
+   position: relative;
+}
+.search > input {
+   width: 315px;
+   height: 30px;
+   border-bottom-left-radius: 15px;
+   border-top-left-radius: 15px;
+   box-sizing: border-box;
+   border: 2px solid #31c469;
+   letter-spacing: 1px;
+   outline: none;
+   padding-left: 12px;
+}
+.search > button {
+   height: 30px;
+   width: 115px;
+   border-radius: 15px;
+   position: absolute;
+   right: 0;
+   border: none;
+   background: #31c469;
+}
+
+.search > button:hover {
+   cursor: pointer;
+   background: #52e089;
+}

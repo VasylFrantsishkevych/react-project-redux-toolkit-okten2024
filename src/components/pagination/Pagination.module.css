@@ -1,0 +1,11 @@
+.pagination_buttons {
+   display: flex;
+   column-gap: 20px;
+}
+
+.pagination_buttons button:hover {
+   cursor: pointer;
+}
+.pagination_buttons button:hover:disabled {
+   cursor: not-allowed;
+}
