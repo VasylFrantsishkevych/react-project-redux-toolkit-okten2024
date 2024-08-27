@@ -28,7 +28,7 @@ export const typeSlice = createSlice({
       builder
          .addCase(getTypes.fulfilled, (state, action) => {
             state.responseType = action.payload
-
+            state.isLoaded = true
          })
    }
 })

@@ -23,7 +23,7 @@ export const abilitySlice = createSlice({
       builder
          .addCase(getAbilities.fulfilled, (state, {payload}) => {
             state.abilities = payload.results
-
+            state.isLoaded = true
          })
    }
 })

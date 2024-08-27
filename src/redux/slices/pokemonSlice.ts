@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, isFulfilled, isPending, isRejected } from "@reduxjs/toolkit"
 
 import { IForm, IPokemon, IResults } from "../../models"
 import { getFormsPokemon, getPokemonByName, getPokemons, getPokemonsByAbility, getPokemonsByType } from "../reducers"
@@ -41,7 +41,6 @@ export const pokemonSlice = createSlice({
             state.pokemons = results
             state.next = next
             state.previous = previous
-
          })
          .addCase(getPokemonByName.fulfilled, (state, {payload}) => {
             state.pokemon = payload
@@ -59,6 +58,13 @@ export const pokemonSlice = createSlice({
          .addCase(getFormsPokemon.fulfilled, (state, {payload}) => {
             state.formsPokemon = payload
          })
+         .addMatcher(isFulfilled(getPokemons, getPokemonByName, getPokemonsByType, getPokemonsByAbility, getFormsPokemon), (state, action) => {
+            state.isLoaded = true;
+        })
+        .addMatcher(isRejected(getPokemons, getPokemonByName, getPokemonsByType, getPokemonsByAbility, getFormsPokemon), (state, action) => {
+         state.error = action.payload as string;
+         state.isLoaded = true;
+     })
    }
 })
 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { abilityActions, useAppDispatch, useAppSelector } from '../../redux';
 
 const AbilitiesPokemon = () => {
-   const { abilities } = useAppSelector((state) => state.abilitySlice);
+   const { abilities, isLoaded } = useAppSelector((state) => state.abilitySlice);
    const dispatch = useAppDispatch();
    const navigate = useNavigate();
  
@@ -19,6 +19,7 @@ const AbilitiesPokemon = () => {
   
   return (
     <div>
+      {!isLoaded && <h2>Loaging...</h2>}
       <h3>Filter by Abilities</h3>
       <select onChange={handleChange}>
          {

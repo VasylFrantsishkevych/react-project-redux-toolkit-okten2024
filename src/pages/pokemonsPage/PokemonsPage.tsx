@@ -10,7 +10,7 @@ import AbilitiesPokemon from "../../components/abilitiesPokemon/AbilitiesPokemon
 import styles from './PokemonPage.module.css';
 
 const PokemonsPage = () => {
-  const { pokemons, next, previous, limit, offset } = useAppSelector((state) => state.pokemonSlice);
+  const { pokemons, next, previous, limit, offset, isLoaded, error } = useAppSelector((state) => state.pokemonSlice);
   const dispatch = useAppDispatch();
   let { state } = useLocation();
  
@@ -31,6 +31,7 @@ const PokemonsPage = () => {
 
   return (
     <div>
+      {!isLoaded && <h2>Loaging...</h2>}
       <div className={styles.pokemon_filter}>
         <TypesPokemon/>
         <AbilitiesPokemon/>

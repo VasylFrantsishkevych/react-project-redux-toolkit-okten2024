@@ -32,9 +32,22 @@ const Pokemon: FC<IProps> = ({ pokemon }) => {
     let favoritePokemons: IPokemon[];
     if (!favoritePokemonsFromStorage) {
       localStorage.setItem("pokemons", JSON.stringify([pokemon]));
-    } else {
+    } 
+    
+    if (favoritePokemonsFromStorage) {
       favoritePokemons = JSON.parse(favoritePokemonsFromStorage)
+      const DuplicatedIndex = favoritePokemons.findIndex(favoritePokemon => favoritePokemon.id === pokemon.id)
+
+    if(DuplicatedIndex == -1) {
+        favoritePokemons.push(pokemon)
+      } else {
+        favoritePokemons[DuplicatedIndex] = pokemon
+      }
+      localStorage.setItem('pokemons', JSON.stringify(favoritePokemons))
+    } else {
+      // @ts-ignore
       favoritePokemons.push(pokemon)
+      // @ts-ignore
       localStorage.setItem('pokemons', JSON.stringify(favoritePokemons))
     }
   };
